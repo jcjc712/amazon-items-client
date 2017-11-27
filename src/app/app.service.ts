@@ -4,6 +4,6 @@ import { Injectable } from '@angular/core';
 export class AppService {
   constructor() { }
   getServerDomain(){
-    return 'http://amazonwishlist.dev';
+    return 'https://amazon-advertisement.herokuapp.com';
   }
 }
