@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-block">
+    <div class="row">
+      <div class="col-4">
+        <img [src]="item.smallImage" alt="">
+      </div>
+      <div class="col-8">
+        <h4><a routerLink="/wishlist/{{ item.id }}">{{ item.title }}</a></h4>
+        <p>{{ item.price }}</p>
+        <i style="cursor: pointer; color: green" class="fa fa-heart" aria-hidden="true" (click)="attachOrDetach(item)"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+

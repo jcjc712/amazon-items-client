@@ -1,0 +1,37 @@
+<br>
+<div class="card">
+  <div class="card-block">
+
+    <form (submit)="filterItems(f)" #f="ngForm">
+      <div class="row">
+        <div class="col-6 col-md-3">
+          <div class="form-group">
+            <label for="category">Categoy</label>
+            <select class="form-control" name="category" id="category" ngModel [(ngModel)]="searchIndex">
+              <option value="">Select...</option>
+              <option *ngFor="let category of categories" value="{{ category.name }}">{{ category.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="form-group">
+            <label for="sort">Sort</label>
+            <select class="form-control" id="sort" name="sort" [(ngModel)]="sort">
+              <option value="">Select...</option>
+              <option *ngFor="let sort of sorts" value="{{ sort.name }}">{{ sort.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-8 col-md-4">
+          <div class="form-group">
+            <label for="keyword">Keyword</label>
+            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search..." ngModel [(ngModel)]="keyword">
+          </div>
+        </div>
+        <div class="col-4 col-md-2">
+          <button style="cursor:pointer" type="submit" class="btn btn-primary btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

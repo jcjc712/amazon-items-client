@@ -1,0 +1,9 @@
+<br>
+<app-wish-item *ngFor="let item of items"
+                 [item]="item"
+></app-wish-item>
+<ng-template [ngIf]="items.length == 0">
+  <p>No data was found!</p>
+</ng-template>
+<br>
+<br>

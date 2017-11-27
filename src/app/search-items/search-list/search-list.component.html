@@ -1,0 +1,9 @@
+<br>
+<app-search-item *ngFor="let item of items"
+                 [item]="item"
+></app-search-item>
+<ng-template [ngIf]="items.length == 0">
+    <p>No data was found!</p>
+</ng-template>
+
+

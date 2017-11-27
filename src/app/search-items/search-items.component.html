@@ -1,0 +1,11 @@
+<app-search-filters></app-search-filters>
+
+<app-search-list></app-search-list>
+<br>
+<nav aria-label="...">
+  <ul class="pagination">
+    <li *ngFor="let id of totalPages" class="page-item" [ngClass]="{'active': pageId === id }">
+      <a class="page-link" (click)="filterItems(id)">{{id}}</a>
+    </li>
+  </ul>
+</nav>
