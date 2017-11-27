@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
+## Description
+
+This is the frontend of a system which use Amazon Advertisement APIs to filter items and follow or unfollow them.
+
+### Change the name of domain
+Once you have run your backend server change the damain name in the file "app.service.ts"
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
