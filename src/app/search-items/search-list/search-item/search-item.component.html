@@ -7,7 +7,9 @@
       <div class="col-8">
         <h4>{{ item.title }}</h4>
         <p>{{ item.price }}</p>
-        <i style="cursor: pointer" class="fa fa-heart" (click)="attachOrDetach(item)" [ngClass]="{'following': item.follow === 1 }" aria-hidden="true"></i>
+        <ng-template [ngIf]="authService.isAuthenticated()">
+          <i style="cursor: pointer" class="fa fa-heart" (click)="attachOrDetach(item)" [ngClass]="{'following': item.follow === 1 }" aria-hidden="true"></i>
+        </ng-template>
       </div>
     </div>
   </div>

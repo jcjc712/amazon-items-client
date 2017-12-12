@@ -1,18 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Response } from '@angular/http';
+import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
 import {Subject} from "rxjs/Subject";
 import {AppService} from "../app.service";
+import {AuthService} from "../auth/auth.service";
 @Injectable()
 export class WishItemsService {
 
   private localItems = [];
+  //private token;
   itemsChanged = new Subject<any>();
-  constructor(private http: Http, private appService:AppService) {
-  }
+  constructor(private http: Http, private appService:AppService, private authService:AuthService) {
 
+  }
   getItems(){
-    /*TODO set token*/
-    return this.http.get(this.appService.getServerDomain()+'/api/wishlist').subscribe(
+      const token = this.authService.getToke();
+      let myHeaders = new Headers();
+      myHeaders.set('Content-Type', 'application/json');
+      myHeaders.set('Accept', 'application/json');
+      myHeaders.set('Authorization', token);
+      /*let myParams = new URLSearchParams();
+      myParams.set('category', 'a');*/
+      //let options = new RequestOptions({ headers: myHeaders, params: myParams });
+
+    return this.http.get(this.appService.getServerDomain()+'/api/wishlist', {
+        headers: myHeaders
+    }).subscribe(
         (response: Response) => {
           const items = response.json();
           this.localItems = items.rows;
@@ -40,7 +52,18 @@ export class WishItemsService {
           item:[item.asin],
           action:action,
       };
-      return this.http.post(this.appService.getServerDomain()+'/api/wishlist', params).subscribe(
+
+        /*TODO condition params*/
+      const token = this.authService.getToke();
+      let myHeaders = new Headers();
+      myHeaders.set('Content-Type', 'application/json');
+      myHeaders.set('Accept', 'application/json');
+      myHeaders.set('Authorization', token);
+      //let options = new RequestOptions({ headers: myHeaders, params: params });
+
+      return this.http.post(this.appService.getServerDomain()+'/api/wishlist', params,
+          {headers: myHeaders}
+      ).subscribe(
           (response: Response) => {
               item.follow = flagFollow;
                 if(action == 'detach'){

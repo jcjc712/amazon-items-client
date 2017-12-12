@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  backendDomain: 'http://amazonwishlist.dev'
+  backendDomain: 'http://amazonwishlist.dev',
+  clientSecret: 'sk0t9yG4tEy8UpPl4dg9Z3i4MO5HLfKqni3IYhn6'
 };

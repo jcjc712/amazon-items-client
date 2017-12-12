@@ -7,4 +7,7 @@ export class AppService {
   getServerDomain(){
     return environment.backendDomain;
   }
+  getClientSecret(){
+    return environment.clientSecret;
+  }
 }

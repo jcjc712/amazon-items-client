@@ -21,6 +21,10 @@ import { SearchFiltersService } from './search-items/search-filters/search-filte
 import { SearchItemsService } from './search-items/search-items.service';
 import { WishItemsService } from './wish-items/wish-items.service';
 import { AppService } from './app.service';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import {AuthService} from "./auth/auth.service";
+import { ActivationComponent } from './activation/activation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +39,10 @@ import { AppService } from './app.service';
     WishListComponent,
     WishItemComponent,
     WishDetailComponent,
-    ItemComponent
+    ItemComponent,
+    SignupComponent,
+    SigninComponent,
+    ActivationComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +54,8 @@ import { AppService } from './app.service';
     SearchFiltersService,
     SearchItemsService,
     WishItemsService,
-    AppService
+    AppService,
+      AuthService
   ],
   bootstrap: [AppComponent]
 })
