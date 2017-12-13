@@ -4,10 +4,16 @@ import {AppService} from "../app.service";
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/do'
 import {Router} from "@angular/router";
+import {LoadingPageService} from "../tools/loading-page/loading-page.service";
+
 @Injectable()
 export class AuthService {
     private token: string = null;
-    constructor(private http: Http, private appService: AppService, private router: Router){
+    constructor(private http: Http,
+                private appService: AppService,
+                private router: Router,
+                private loadingPage: LoadingPageService,
+                ){
     }
 
     signup(username: string, email: string, password: string){
@@ -15,7 +21,11 @@ export class AuthService {
             {name: username, email: email, password: password},
             {headers:
                 new Headers({'Accept':'application/json','Content-Type':'application/json'}),
-            });
+            })
+            .do(
+                (response) => {
+                }
+            );
     }
 
     signin(email: string, password: string){
@@ -57,6 +67,7 @@ export class AuthService {
     }
 
     logout(){
+        this.loadingPage.callComponentMethod(true);
         this.http.post(this.appService.getServerDomain()+'/api/user/logout',
             {},
             {headers: new Headers({'Accept':'application/json','Content-Type':'application/json','Authorization': this.token})})
@@ -64,10 +75,12 @@ export class AuthService {
                 (respose) => {
                     localStorage.removeItem('token');
                     this.token = null;
+                    this.loadingPage.callComponentMethod(false);
                     this.router.navigate(["/"]);
                     console.log(respose);
                 },
                 (error) => {
+                    this.loadingPage.callComponentMethod(false);
                     console.log(error);
                 }
             );

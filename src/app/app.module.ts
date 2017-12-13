@@ -25,6 +25,18 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from "./auth/auth.service";
 import { ActivationComponent } from './activation/activation.component';
+/*Loading page*/
+import { LoadingPageComponent } from './tools/loading-page/loading-page.component';
+import {LoadingPageService} from './tools/loading-page/loading-page.service';
+/*Alert*/
+import { AlertComponent } from './tools/toaster/_directives/index';
+import { AlertService } from './tools/toaster/_services/index';
+/*Modals*/
+import { ModalComponent } from './tools/modal/modal/modal.component';
+import {ModalService} from './tools/modal/modal/modal.service';
+/*General Modal*/
+import { GeneralModalComponent } from './tools/general-modal/general-modal.component';
+import {GeneralModalService} from './tools/general-modal/general-modal.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +54,11 @@ import { ActivationComponent } from './activation/activation.component';
     ItemComponent,
     SignupComponent,
     SigninComponent,
-    ActivationComponent
+    ActivationComponent,
+    LoadingPageComponent,
+    AlertComponent,
+    ModalComponent,
+    GeneralModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +71,11 @@ import { ActivationComponent } from './activation/activation.component';
     SearchItemsService,
     WishItemsService,
     AppService,
-      AuthService
+      AuthService,
+    AlertService,
+    ModalService,
+    GeneralModalService,
+    LoadingPageService,
   ],
   bootstrap: [AppComponent]
 })
